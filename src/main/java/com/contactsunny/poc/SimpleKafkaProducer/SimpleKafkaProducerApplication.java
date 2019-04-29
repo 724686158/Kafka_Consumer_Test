@@ -37,20 +37,7 @@ public class SimpleKafkaProducerApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        /*
-         * Defining producer properties.
-         */
-        Properties producerProperties = new Properties();
-        producerProperties.put("bootstrap.servers", kafkaBootstrapServers);
-        producerProperties.put("acks", "all");
-        producerProperties.put("retries", 0);
-        producerProperties.put("batch.size", 16384);
-        producerProperties.put("linger.ms", 1);
-        producerProperties.put("buffer.memory", 33554432);
-        producerProperties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        producerProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-        KafkaProducer<String, String> producer = new KafkaProducer<>(producerProperties);
         Properties consumerProperties = new Properties();
         consumerProperties.put("bootstrap.servers", kafkaBootstrapServers);
         consumerProperties.put("group.id", zookeeperGroupId);
