@@ -37,7 +37,7 @@ public class BinlogSimpleKafkaConsumer {
         HashMap<Integer, Queue<JSONObject>> binlogCache = new HashMap<>();
         while(true) {
 
-            ConsumerRecords<String, String> records = kafkaConsumer.poll(5000);
+            ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
 
             for (ConsumerRecord<String, String> record : records) {
 
@@ -93,11 +93,6 @@ public class BinlogSimpleKafkaConsumer {
                         System.out.println(message);
                         System.out.println();
                     }
-                    /*
-                    To make sure we successfully deserialized the message to a JSON object, we'll
-                    log the index of JSON object.
-                     */
-
 
                 } catch (JSONException e) {
                     logger.error(e.getMessage());
